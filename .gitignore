@@ -1,0 +1,50 @@
+# ───────────────────────── Dependencies ─────────────────────────
+node_modules/
+.pnpm-store/
+.pnp
+.pnp.*
+.yarn/*
+
+# ───────────────────────── Build outputs ────────────────────────
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# ───────────────────────── Turborepo / Vercel ───────────────────
+.turbo/
+.vercel/
+
+# ───────────────────────── Testing ──────────────────────────────
+coverage/
+playwright-report/
+test-results/
+
+# ───────────────────────── Environment ──────────────────────────
+# Committed (NON-secret, per-environment config):
+#   .env.development  .env.qa  .env.production  .env.example
+# Ignored (secrets / machine-specific overrides):
+.env
+.env.local
+.env.*.local
+*.pem
+
+# ───────────────────────── Logs ─────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ───────────────────────── OS / Editors ─────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.swp
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

@@ -1,0 +1,29 @@
+{
+  "name": "users",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3004",
+    "dev:qa": "dotenv -c qa -- next dev --port 3004",
+    "build": "next build",
+    "build:qa": "dotenv -c qa -- next build",
+    "start": "next start --port 3004",
+    "start:qa": "dotenv -c qa -- next start --port 3004",
+    "typecheck": "next typegen && tsc --noEmit",
+    "clean": "node ../../scripts/clean.mjs"
+  },
+  "dependencies": {
+    "@beeraz/ui": "workspace:*",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@beeraz/typescript-config": "workspace:*",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "dotenv-cli": "^11.0.0",
+    "typescript": "^5.9.0"
+  }
+}

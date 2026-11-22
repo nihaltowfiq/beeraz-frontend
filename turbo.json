@@ -1,0 +1,57 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "globalDependencies": ["pnpm-workspace.yaml"],
+  "globalEnv": ["NODE_ENV"],
+  "tasks": {
+    "build": {
+      "description": "Production build (loads .env.production)",
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env",
+        ".env.local",
+        ".env.production",
+        ".env.production.local"
+      ],
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL", "USERS_URL"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build:qa": {
+      "description": "QA build (loads .env.qa via dotenv-cli)",
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env", ".env.local", ".env.qa", ".env.qa.local"],
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL", "USERS_URL"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+    },
+    "dev:qa": {
+      "cache": false,
+      "persistent": true,
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true,
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+    },
+    "start:qa": {
+      "dependsOn": ["build:qa"],
+      "cache": false,
+      "persistent": true,
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

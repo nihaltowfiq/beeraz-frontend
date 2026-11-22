@@ -1,0 +1,28 @@
+{
+  "name": "beeraz",
+  "private": true,
+  "packageManager": "pnpm@12.11.2",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:qa": "turbo run dev:qa",
+    "dev:shell": "turbo run dev --filter=shell",
+    "dev:products": "turbo run dev --filter=products",
+    "dev:orders": "turbo run dev --filter=orders",
+    "dev:cart": "turbo run dev --filter=cart",
+    "dev:users": "turbo run dev --filter=users",
+    "build": "turbo run build",
+    "build:qa": "turbo run build:qa",
+    "build:prod": "turbo run build",
+    "start": "turbo run start",
+    "start:qa": "turbo run start:qa",
+    "start:prod": "turbo run start",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && node scripts/clean.mjs .turbo"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.13"
+  }
+}
