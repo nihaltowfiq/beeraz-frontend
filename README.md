@@ -1,4 +1,6 @@
-# Beeraz — Next.js Micro-Frontends (Turborepo · Multi-Zones · Turbopack + SWC)
+# Beeraz — E-Commerce Micro-Frontend Monorepo
+
+Turborepo · Next.js Multi-Zones · Turbopack + SWC
 
 ```
 beeraz/
