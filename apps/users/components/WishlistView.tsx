@@ -11,7 +11,7 @@ import {
   formatPrice,
 } from '@beeraz/ui';
 import { useCartStore, useHydrated, useWishlistStore } from '@beeraz/ui/store';
-import { CartTabs } from '@/components/CartTabs';
+import { UsersTabs } from '@/components/UsersTabs';
 
 const shellUrl = process.env.NEXT_PUBLIC_SHELL_URL ?? '';
 
@@ -24,7 +24,7 @@ export function WishlistView() {
   if (!hydrated) {
     return (
       <>
-        <CartTabs active="wishlist" />
+        <UsersTabs active="wishlist" />
         <p className="mf-muted">Loading wishlist…</p>
       </>
     );
@@ -33,7 +33,7 @@ export function WishlistView() {
   if (items.length === 0) {
     return (
       <>
-        <CartTabs active="wishlist" />
+        <UsersTabs active="wishlist" />
         <EmptyState
           icon="♡"
           title="Your wishlist is empty"
@@ -51,7 +51,7 @@ export function WishlistView() {
 
   return (
     <>
-      <CartTabs active="wishlist" />
+      <UsersTabs active="wishlist" />
       <div className="mf-stack">
         <div className="mf-grid">
           {items.map((item) => (

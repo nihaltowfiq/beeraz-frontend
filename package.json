@@ -11,7 +11,6 @@
     "dev:shell": "turbo run dev --filter=shell",
     "dev:products": "turbo run dev --filter=products",
     "dev:orders": "turbo run dev --filter=orders",
-    "dev:cart": "turbo run dev --filter=cart",
     "dev:users": "turbo run dev --filter=users",
     "build": "turbo run build",
     "build:qa": "turbo run build:qa",

@@ -7,9 +7,8 @@ beeraz/
 ├─ apps/
 │  ├─ shell/      :3000  host / consumer   → owns "/" and proxies the zones
 │  ├─ products/   :3001  provider          → basePath /products (catalog, search, reviews)
-│  ├─ orders/     :3002  provider          → basePath /orders (order history & tracking)
-│  ├─ cart/       :3003  provider          → basePath /cart (cart, wishlist, checkout & payment)
-│  └─ users/      :3004  provider          → basePath /users (profile & address book)
+│  ├─ orders/     :3002  provider          → basePath /orders (orders, cart, checkout & payment)
+│  └─ users/      :3004  provider          → basePath /users (profile, address book & wishlist)
 ├─ packages/
 │  ├─ ui/                 @beeraz/ui  shared components, zustand stores, mock data, styles
 │  └─ typescript-config/  @beeraz/typescript-config  shared tsconfig presets
@@ -23,7 +22,7 @@ beeraz/
 | Concern | Solution |
 | --- | --- |
 | Monorepo | **pnpm workspaces + Turborepo** (task graph, caching, parallel runs). |
-| Composition | **Next.js Multi-Zones**: the shell's `rewrites()` proxy `/products/*`, `/orders/*`, `/cart/*`, `/users/*` to the provider apps, so everything is served from one origin. |
+| Composition | **Next.js Multi-Zones**: the shell's `rewrites()` proxy `/products/*`, `/orders/*`, `/users/*` to the provider apps, so everything is served from one origin. |
 | Bundler / compiler | **Turbopack** + **SWC**. No webpack, no Babel. |
 | Shared UI | `@beeraz/ui`, compiled from TS source via `transpilePackages`. |
 | Shared state | **zustand** + `persist` → `localStorage` (same origin via the shell). |
@@ -32,7 +31,7 @@ beeraz/
 
 ```bash
 pnpm install
-pnpm dev            # all 5 apps via turbo (development env)
+pnpm dev            # all 4 apps via turbo (development env)
 ```
 
 Open **http://localhost:3000**.
@@ -43,7 +42,7 @@ Open **http://localhost:3000**.
 | --- | --- | --- |
 | `pnpm dev` | development | `next dev` for all apps |
 | `pnpm dev:qa` | qa | `next dev` with `.env.qa` |
-| `pnpm dev:<app>` | development | single app (`shell`, `products`, `orders`, `cart`, `users`) |
+| `pnpm dev:<app>` | development | single app (`shell`, `products`, `orders`, `users`) |
 | `pnpm build` / `pnpm build:prod` | production | production build of all apps |
 | `pnpm build:qa` | qa | optimized build using `.env.qa` |
 | `pnpm start` / `pnpm start:prod` | production | build (cached) + start |
@@ -70,7 +69,7 @@ Precedence (highest first): real process env (CI/hosting) → `.env.<env>.local`
 | Variable | App | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_APP_ENV` | all | `development` / `qa` / `production` |
-| `PRODUCTS_URL`, `ORDERS_URL`, `CART_URL`, `USERS_URL` | shell | origins of the deployed zones (required for QA/prod builds) |
+| `PRODUCTS_URL`, `ORDERS_URL`, `USERS_URL` | shell | origins of the deployed zones (required for QA/prod builds) |
 | `NEXT_PUBLIC_SHELL_URL` | zones | header link target; empty = relative links (through the shell) |
 
 > [!IMPORTANT]

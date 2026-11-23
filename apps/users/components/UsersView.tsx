@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { Badge, Button, Card, CardBody, CardFooter, CardHeader } from '@beeraz/ui';
 import { useHydrated, useUsersStore } from '@beeraz/ui/store';
+import { UsersTabs } from '@/components/UsersTabs';
 
 export function UsersView() {
   const hydrated = useHydrated();
@@ -24,7 +25,14 @@ export function UsersView() {
   const [country, setCountry] = useState('Bangladesh');
   const [isDefault, setIsDefault] = useState(false);
 
-  if (!hydrated) return <p className="mf-muted">Loading user profile &amp; addresses…</p>;
+  if (!hydrated) {
+    return (
+      <>
+        <UsersTabs active="profile" />
+        <p className="mf-muted">Loading user profile &amp; addresses…</p>
+      </>
+    );
+  }
 
   const handleProfileSave = (e: FormEvent) => {
     e.preventDefault();
@@ -58,7 +66,9 @@ export function UsersView() {
   };
 
   return (
-    <div className="mf-stack" style={{ gap: '1.5rem' }}>
+    <>
+      <UsersTabs active="profile" />
+      <div className="mf-stack" style={{ gap: '1.5rem' }}>
       <Card>
         <CardHeader>Profile</CardHeader>
         <form onSubmit={handleProfileSave}>
@@ -259,6 +269,7 @@ export function UsersView() {
           </form>
         </Card>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

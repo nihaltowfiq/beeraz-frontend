@@ -25,7 +25,6 @@ function zoneUrl(name: string, devFallback: string): string {
 const zones = {
   products: zoneUrl('PRODUCTS_URL', 'http://localhost:3001'),
   orders: zoneUrl('ORDERS_URL', 'http://localhost:3002'),
-  cart: zoneUrl('CART_URL', 'http://localhost:3003'),
   users: zoneUrl('USERS_URL', 'http://localhost:3004'),
 };
 

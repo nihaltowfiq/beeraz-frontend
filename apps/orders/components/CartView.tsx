@@ -20,9 +20,9 @@ import {
   useHydrated,
   useWishlistStore,
 } from '@beeraz/ui/store';
-import { CartTabs } from '@/components/CartTabs';
+import { OrdersTabs } from '@/components/OrdersTabs';
+import { shellUrl } from '@/lib/constants';
 
-const shellUrl = process.env.NEXT_PUBLIC_SHELL_URL ?? '';
 const SHIPPING_FREE_FROM = 500;
 const SHIPPING_FEE = 9.99;
 
@@ -38,7 +38,7 @@ export function CartView() {
   if (!hydrated) {
     return (
       <>
-        <CartTabs active="cart" />
+        <OrdersTabs active="cart" />
         <p className="mf-muted">Loading cart…</p>
       </>
     );
@@ -47,7 +47,7 @@ export function CartView() {
   if (items.length === 0) {
     return (
       <>
-        <CartTabs active="cart" />
+        <OrdersTabs active="cart" />
         <EmptyState
           icon="🛒"
           title="Your cart is empty"
@@ -76,7 +76,7 @@ export function CartView() {
 
   return (
     <>
-      <CartTabs active="cart" />
+      <OrdersTabs active="cart" />
       <div className="mf-two-col">
         <Card>
           <CardHeader>

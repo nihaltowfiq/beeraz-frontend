@@ -20,9 +20,9 @@ import {
   useOrdersStore,
   useUsersStore,
 } from '@beeraz/ui/store';
-import { CartTabs } from '@/components/CartTabs';
+import { OrdersTabs } from '@/components/OrdersTabs';
+import { shellUrl } from '@/lib/constants';
 
-const shellUrl = process.env.NEXT_PUBLIC_SHELL_URL ?? '';
 const SHIPPING_FREE_FROM = 500;
 const SHIPPING_FEE = 9.99;
 
@@ -50,7 +50,7 @@ export function CheckoutView() {
   if (!hydrated) {
     return (
       <>
-        <CartTabs active="checkout" />
+        <OrdersTabs active="checkout" />
         <p className="mf-muted">Loading checkout…</p>
       </>
     );
@@ -59,7 +59,7 @@ export function CheckoutView() {
   if (items.length === 0) {
     return (
       <>
-        <CartTabs active="checkout" />
+        <OrdersTabs active="checkout" />
         <EmptyState
           icon="💳"
           title="Nothing to check out"
@@ -99,7 +99,7 @@ export function CheckoutView() {
 
   return (
     <>
-      <CartTabs active="checkout" />
+      <OrdersTabs active="checkout" />
       <form onSubmit={handlePay} className="mf-two-col">
         <div className="mf-stack">
           <Card>

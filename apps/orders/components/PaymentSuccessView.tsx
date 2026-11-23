@@ -1,9 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ButtonLink, Card, CardBody, CardFooter, CardHeader } from '@beeraz/ui';
-
-const shellUrl = process.env.NEXT_PUBLIC_SHELL_URL ?? '';
+import { shellUrl } from '@/lib/constants';
 
 export function PaymentSuccessView() {
   const params = useSearchParams();
@@ -22,9 +22,12 @@ export function PaymentSuccessView() {
         </p>
       </CardBody>
       <CardFooter>
-        <ButtonLink href={orderId ? `${shellUrl}/orders/${orderId}` : `${shellUrl}/orders`}>
+        <Link
+          href={orderId ? `/${orderId}` : '/'}
+          className="mf-btn mf-btn--primary mf-btn--md"
+        >
           Track order →
-        </ButtonLink>
+        </Link>
         <ButtonLink href={`${shellUrl}/products`} variant="ghost">
           Continue shopping
         </ButtonLink>

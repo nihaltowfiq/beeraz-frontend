@@ -4,9 +4,8 @@ import { LiveStats } from '@/components/LiveStats';
 
 const ZONES = [
   { name: 'Products', href: '/products', port: 3001, icon: '🛍️', text: 'Browse, search, and review products.' },
-  { name: 'Orders', href: '/orders', port: 3002, icon: '📦', text: 'Track the orders you have placed.' },
-  { name: 'Cart', href: '/cart', port: 3003, icon: '🛒', text: 'Manage cart, wishlist, and checkout payments.' },
-  { name: 'Users', href: '/users', port: 3004, icon: '👤', text: 'Manage your profile and delivery addresses.' },
+  { name: 'Orders', href: '/orders', port: 3002, icon: '📦', text: 'Track orders, manage your cart, and checkout.' },
+  { name: 'Users', href: '/users', port: 3004, icon: '👤', text: 'Manage your profile, addresses, and wishlist.' },
 ];
 
 export default function HomePage() {
@@ -18,7 +17,7 @@ export default function HomePage() {
         <Badge tone="info">Shell · localhost:3000</Badge>
         <h1 style={{ marginTop: '0.75rem' }}>Welcome to Beeraz</h1>
         <p>
-          This page is served by the <strong>shell</strong>. Products, Orders, Cart and Users are
+          This page is served by the <strong>shell</strong>. Products, Orders and Users are
           independent Next.js apps stitched together under one domain with Multi-Zones — built with
           Turbopack &amp; SWC, no webpack.
         </p>

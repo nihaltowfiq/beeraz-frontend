@@ -14,14 +14,14 @@
         ".env.production",
         ".env.production.local"
       ],
-      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL", "USERS_URL"],
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "USERS_URL"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "build:qa": {
       "description": "QA build (loads .env.qa via dotenv-cli)",
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env", ".env.local", ".env.qa", ".env.qa.local"],
-      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL", "USERS_URL"],
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "USERS_URL"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "typecheck": {
@@ -31,24 +31,24 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL"]
     },
     "dev:qa": {
       "cache": false,
       "persistent": true,
-      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL"]
     },
     "start": {
       "dependsOn": ["build"],
       "cache": false,
       "persistent": true,
-      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL"]
     },
     "start:qa": {
       "dependsOn": ["build:qa"],
       "cache": false,
       "persistent": true,
-      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL", "CART_URL"]
+      "env": ["NEXT_PUBLIC_*", "PRODUCTS_URL", "ORDERS_URL"]
     },
     "clean": {
       "cache": false

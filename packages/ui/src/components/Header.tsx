@@ -4,13 +4,12 @@ import { selectTotalItems, useCartStore } from '../store/cart-store';
 import { useHydrated } from '../store/use-hydrated';
 import { cn } from '../utils';
 
-export type Zone = 'home' | 'products' | 'orders' | 'cart' | 'users';
+export type Zone = 'home' | 'products' | 'orders' | 'users';
 
 const NAV: Array<{ zone: Zone; label: string; path: string }> = [
   { zone: 'home', label: 'Home', path: '/' },
   { zone: 'products', label: 'Products', path: '/products' },
   { zone: 'orders', label: 'Orders', path: '/orders' },
-  { zone: 'cart', label: 'Cart', path: '/cart' },
   { zone: 'users', label: 'Users', path: '/users' },
 ];
 
@@ -40,8 +39,10 @@ export function Header({ active, shellUrl = '' }: { active: Zone; shellUrl?: str
               aria-current={active === item.zone ? 'page' : undefined}
             >
               {item.label}
-              {item.zone === 'cart' && hydrated && count > 0 && (
-                <span className="mf-header__count">{count}</span>
+              {item.zone === 'orders' && hydrated && count > 0 && (
+                <span className="mf-header__count" title="Items in cart">
+                  {count}
+                </span>
               )}
             </a>
           ))}
